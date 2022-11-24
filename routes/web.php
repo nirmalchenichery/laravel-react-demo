@@ -25,7 +25,7 @@ Route::get('pagination', [PostController::class, 'pagination']);
 // Route::get('comment/{id}', [CommentController::class, 'index']);
 // Route::get('sort', [PostController::class, 'sort']);
 
-// Route::get('/posts/delete', 'PostController@delete')->middleware('can:isAdmin')->name('post.delete');
+// Route::get('/posts/delete', 'PostController@delete')->middleware('can:isAdmin')->name('posts.delete');
 // Route::get('/posts/update', 'PostController@update')->middleware('can:isManager')->name('post.update');
 // Route::get('/posts/create', 'PostController@create')->middleware('can:isUser')->name('post.create');
 

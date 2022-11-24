@@ -156,8 +156,7 @@ class PostController extends Controller
         //     Post::find($id)->delete();
         // } 
 
-        Gate::authorize('isAdmin');
-
+        // Gate::authorize('isAdmin');
         Post::find($id)->delete();
         return redirect()->route('posts.index');
     }

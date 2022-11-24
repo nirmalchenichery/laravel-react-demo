@@ -3,9 +3,8 @@ import { Head, usePage, Link } from '@inertiajs/inertia-react';
 import Authenticated from '@/Layouts/AuthenticatedLayout';
 import { Inertia } from "@inertiajs/inertia";
 
-const PostListItem = (props) => {
 
-    //const {} = usePage().props;
+const PostListItem = (props) => {
 
     function destroy(e) {
         if (confirm("Are you sure you want to delete this user?")) {
@@ -37,14 +36,6 @@ const PostListItem = (props) => {
                 >
                     Edit
                 </Link>
-                {/* {
-                    if (Gate::allows('isAdmin')) {
-                        Post::find($id)->delete();
-                    } 
-                } */}
-                
-
-
                 <button
                     onClick={destroy}
                     id={props.post.id}

@@ -99,6 +99,9 @@ export default function Index(props) {
                                 />
                             </div> */}
   
+
+                           
+
                             <div className="w-full">
                                     <div className="grid grid-cols-8">
                                         <div onClick={()=>sorting('id')} className="px-4 py-2 w-20 font-bold">No.</div>
