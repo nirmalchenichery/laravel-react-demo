@@ -24,28 +24,28 @@ class PostController extends Controller
                ->with('posts' , $posts);
     }
 
-    // public function search()
-    // {
-    //     // $posts = Post::all();
-    //     $posts = Post::latest()->paginate(3);
-    //     // return Inertia::render('Posts/SearchPaginatedPage')
-    //     return Inertia::render('Posts/SearchIndex')
-    //            ->with('posts' , $posts);
-    // }
+    public function search()
+    {
+        // $posts = Post::all();
+        $posts = Post::latest()->paginate(3);
+        // return Inertia::render('Posts/SearchPaginatedPage')
+        return Inertia::render('Posts/SearchIndex')
+               ->with('posts' , $posts);
+    }
 
-    // public function pagination()
-    // {
-    //    $posts = Post::latest()->paginate(10);
-    //    return Inertia::render('Posts/SearchPagination')
-    //            ->with('posts' , $posts);
-    // }
+    public function pagination()
+    {
+       $posts = Post::latest()->paginate(10);
+       return Inertia::render('Posts/SearchPagination')
+               ->with('posts' , $posts);
+    }
 
-    // public function sort()
-    // {
-    //    $posts = Post::latest()->paginate(10);
-    //    return Inertia::render('Posts/SearchPaginatedBoot')
-    //            ->with('posts' , $posts);
-    // }
+    public function sort()
+    {
+       $posts = Post::latest()->paginate(10);
+       return Inertia::render('Posts/SearchPaginatedBoot')
+               ->with('posts' , $posts);
+    }
     
     /**
      * Write code on Method
@@ -72,7 +72,6 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $posted_at=  $request->validated('posted_date') . " ". $request->validated('posted_time');
-        $date = strtotime($posted_at);
 
         Post::create([
             'language'      => $request->validated('language'),
@@ -80,7 +79,7 @@ class PostController extends Controller
             'body'          => $request->validated('body'),
             'is_display'    => $request->validated('is_display'),
             'is_approved'   => $request->validated('is_approved'),
-            'posted_at'     => date('Y-m-d H:i:s', $date),
+            'posted_at'     => date('Y-m-d H:i:s', strtotime($posted_at)),
         ]);
         
         return redirect()->route('posts.index');
@@ -113,7 +112,7 @@ class PostController extends Controller
             'body'          => $request->validated('body'),
             'is_display'    => $request->validated('is_display'),
             'is_approved'   => $request->validated('is_approved'),
-            'posted_at'     => date('Y-m-d H:i:s', $date),
+            'posted_at'     => date('Y-m-d H:i:s', strtotime($posted_at)),
         ]);
 
         return redirect()->route('posts.index');

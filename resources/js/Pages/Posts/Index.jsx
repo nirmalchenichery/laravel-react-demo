@@ -86,7 +86,7 @@ export default function Index(props) {
                                     Search Page
                                 </Link> */}
                             </div>
-                            {/* <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center justify-between mb-6">
                                 
                                 <input
                                     type="text"
@@ -97,7 +97,7 @@ export default function Index(props) {
                                         SetInput(e.target.value)
                                     }
                                 />
-                            </div> */}
+                            </div>
   
 
                            
