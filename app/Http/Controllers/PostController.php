@@ -56,11 +56,24 @@ class PostController extends Controller
     {
         return Inertia::render('Posts/Create');
     }
-    
-    public function show(Post $post)
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function show($id)
     {
-        return Inertia::render('Posts/Show')
-            ->with('post' , $post);
+        if (Gate::allows('isAdmin','isManager')) 
+        {
+            $post = Post::findOrFail($id);
+            return Inertia::render('Posts/Show')
+                    ->with('post' , $post);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -87,14 +100,26 @@ class PostController extends Controller
     }
   
     /**
-     * Write code on Method
+     * Show the form for editing the specified resource.
      *
-     * @return response()
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        return Inertia::render('Posts/Edit')
-            ->with('post' , $post);
+        $response = Gate::inspect('edit-settings');
+        
+        if ($response->allowed()) 
+        {
+            $post = Post::findOrFail($id);
+            return Inertia::render('Posts/Edit')
+                ->with('post' ,$post);
+        } else 
+        {
+            var_dump($response->message()); exit;
+        }
+
+       
     }
     
     /**
@@ -118,20 +143,22 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
     
-    /**
-     * Show the form for creating a new resource.
+   /**
+     * Remove the specified resource from storage.
      *
-     * @return Response
-     */
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+    */
     public function destroy($id) //,PostRequest $request
     {
-        // if (Gate::allows('isAdmin')) {
-        //     Post::find($id)->delete();
-        // } 
+        // Gate::authorize('isAdmin');
+        // Post::find($id)->delete();
+        // return redirect()->route('posts.index');
 
-        Gate::authorize('isAdmin');
-            
-        Post::find($id)->delete();
+        $post = Post::findOrFail($id);
+        $this->authorize('delete', $post);
+        $post->delete();
         return redirect()->route('posts.index');
+
     }
 }

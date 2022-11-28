@@ -21,6 +21,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' =>1,
             'language' => "en",
             'title' => $this->faker->title,
             'body' => $this->faker->text,

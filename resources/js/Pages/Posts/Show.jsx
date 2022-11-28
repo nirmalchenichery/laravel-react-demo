@@ -9,6 +9,8 @@ import PostShowItem from '@/Components/PostShowItem';
 
 export default function Show(props) {
   
+    console.log(props);
+
     const { post } = usePage().props;
     const { data, setData, put, errors } = useForm({
         id: post.id || "",
@@ -45,6 +47,7 @@ export default function Show(props) {
                                 </Link>
                             </div>
   
+                            {console.log(data)}
                             <PostShowItem post={data}/>
 
                         </div>

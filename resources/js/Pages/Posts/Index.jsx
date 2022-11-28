@@ -18,7 +18,7 @@ export default function Index(props) {
 
     const [PostFromDb,setPostFromDb] = useState(posts.data);
    
-    console.log(PostFromDb);
+    // console.log(PostFromDb);
 
     const [order,setOrder] = useState("ASC");
     const sorting = async (col)=>{
