@@ -107,16 +107,18 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+       
         $response = Gate::inspect('edit-settings');
         
         if ($response->allowed()) 
         {
             $post = Post::findOrFail($id);
+            $this->authorize('view', $post); // using Policies Class
             return Inertia::render('Posts/Edit')
                 ->with('post' ,$post);
         } else 
         {
-            var_dump($response->message()); exit;
+            var_dump($response->message());
         }
 
        
