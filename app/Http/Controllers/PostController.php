@@ -66,14 +66,19 @@ class PostController extends Controller
 
     public function show($id)
     {
-        if (Gate::allows('isAdmin','isManager')) 
-        {
-            $post = Post::findOrFail($id);
-            return Inertia::render('Posts/Show')
-                    ->with('post' , $post);
-        }else{
-            abort(403);
-        }
+        $post = Post::findOrFail($id);
+        $this->authorize('view', $post);
+        return Inertia::render('Posts/Show')
+                ->with('post' , $post);
+        
+        // if (Gate::allows('isAdmin','isManager')) 
+        // {
+        //     $post = Post::findOrFail($id);
+        //     return Inertia::render('Posts/Show')
+        //             ->with('post' , $post);
+        // }else{
+        //     abort(403);
+        // }
     }
 
     /**
