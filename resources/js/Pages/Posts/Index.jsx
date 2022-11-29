@@ -1,6 +1,6 @@
 // import React from 'react';
 import React, { useState} from "react";
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '@/Layouts/AuthenticatedLayout';
 import { Inertia } from "@inertiajs/inertia";
 import { Head, usePage, Link } from '@inertiajs/inertia-react';
 import PostListItem from '@/Components/PostListItem';
@@ -59,6 +59,8 @@ export default function Index(props) {
     //     return <PostListItem key={index} post={post}/>
     // })
 
+    // {auth.user.name}
+
     return (
         <Authenticated
             auth={props.auth}
@@ -98,9 +100,6 @@ export default function Index(props) {
                                     }
                                 />
                             </div>
-  
-
-                           
 
                             <div className="w-full">
                                     <div className="grid grid-cols-8">
@@ -121,6 +120,7 @@ export default function Index(props) {
                     </div>
                 </div>
             </div>
+         
         </Authenticated>
     );
 }

@@ -19,10 +19,18 @@ class PostController extends Controller
      */
     public function index()
     {
-       $posts = Post::latest()->paginate(3);
-       return Inertia::render('Posts/Index')
-               ->with('posts' , $posts);
+       if (Gate::allows('isAdmin')) 
+       {
+            $posts = Post::latest()->paginate(3);
+            return Inertia::render('Posts/Index')
+                ->with('posts' , $posts);
+       }
     }
+
+
+
+
+    
 
     public function search()
     {
