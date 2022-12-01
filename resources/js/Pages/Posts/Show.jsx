@@ -1,5 +1,5 @@
 import React from 'react';
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm, usePage, Link } from '@inertiajs/inertia-react';
 import { useState } from "react";
 import Moment from 'moment';

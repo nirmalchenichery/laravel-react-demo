@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Gate;
 
 class PostPolicy
 {
@@ -30,7 +31,7 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        return $user->id == $post->user_id;
+        return $user->id == $post->user_id || Gate::allows('isAdmin') || Gate::allows('isManager');
     }
 
     /**
@@ -53,7 +54,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id == $post->user_id;
+        return $user->id == $post->user_id ||  Gate::allows('isAdmin') || Gate::allows('isManager');
     }
 
     /**
@@ -65,7 +66,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id == $post->user_id || $user->role == "admin";
+        return $user->id == $post->user_id || Gate::allows('isAdmin');
     }
 
     /**

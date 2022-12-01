@@ -1,5 +1,5 @@
 // import React from 'react';
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm, Link } from '@inertiajs/inertia-react';
 import React, { useState } from "react";
 
@@ -95,7 +95,7 @@ export default function Create(props) {
 
                                     </div>
                                     <div className="mb-0">
-                                        <label className="font-bold">Body</label>
+                                        <label className="font-bold">Content</label>
                                         <textarea
                                             type="text"
                                             className="w-full rounded"

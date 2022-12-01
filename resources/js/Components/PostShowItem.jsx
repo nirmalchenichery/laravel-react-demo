@@ -3,7 +3,7 @@ import { Head, usePage, Link } from '@inertiajs/inertia-react';
 import Authenticated from '@/Layouts/AuthenticatedLayout';
 import { Inertia } from "@inertiajs/inertia";
 import { useState } from "react";
-import Modal from "@/Components/Modal";
+import Modal from "@/Components/ModalCustomized";
 import PostCommentList from '@/Components/PostCommentList';
 import axios, { Axios } from 'axios';
 

@@ -5,8 +5,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PostController;
-// use App\Http\Controllers\PaginationController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
+
+use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,15 @@ use App\Http\Controllers\CommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('users', UserController::class);
+Route::get('users.index', [UserController::class, 'index'])->name('users.index');
+
+
+
+
+
+
 
 Route::resource('posts', PostController::class);
 Route::get('search', [PostController::class, 'search'])->name('posts.search');
@@ -40,7 +51,20 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    
+    // Admin Rights
+    if (Gate::allows('isAdmin')){
+        return Inertia::render('AdminDashboard');
+    }
+    elseif(Gate::allows('isManager')){
+        return Inertia::render('ManagerDashboard');
+    }
+    else{
+        return Inertia::render('UserDashboard');
+    } 
+
+
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

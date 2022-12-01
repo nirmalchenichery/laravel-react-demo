@@ -106,7 +106,7 @@ export default function Index(props) {
                                         <div onClick={()=>sorting('id')} className="px-4 py-2 w-20 font-bold">No.</div>
                                         <div onClick={()=>sorting('language')} className="px-4 py-2 font-bold">Language</div>
                                         <div onClick={()=>sorting('title')} className="px-4 py-2 font-bold">Title</div>
-                                        <div onClick={()=>sorting('body')} className="px-4 py-2 font-bold">Body</div>
+                                        <div onClick={()=>sorting('body')} className="px-4 py-2 font-bold">Content</div>
                                         <div onClick={()=>sorting('is_display')} className="px-4 py-2 font-bold">Display Option</div>
                                         <div onClick={()=>sorting('is_approved')} className="px-4 py-2 font-bold">Approved</div>
                                         <div onClick={()=>sorting('posted_at')} className="px-4 py-2 font-bold">Posted at</div>

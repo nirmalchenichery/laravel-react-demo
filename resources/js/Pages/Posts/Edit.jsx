@@ -1,5 +1,5 @@
 import React from 'react';
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm, usePage, Link } from '@inertiajs/inertia-react';
 import { useState } from "react";
 import Moment from 'moment';
@@ -97,7 +97,7 @@ export default function Edit(props) {
                                         
                                     </div>
                                     <div className="mb-0">
-                                        <label className="">Body</label>
+                                        <label className="">Content</label>
                                         <textarea
                                             type="text"
                                             className="w-full rounded"

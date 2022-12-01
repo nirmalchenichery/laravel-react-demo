@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -18,10 +20,28 @@ class UserController extends Controller
      */
     public function index()
     {
+        Gate::authorize('isAdmin');
         $users = User::latest()->paginate(3);
         return Inertia::render('Users/Index')
             ->with('users' , $users);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,19 +61,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // var_dump($request); exit;
 
-        
-        
-        // $x = User::create([
-        //     'name'      => $request->validated('name'),
-        //     'password'  => Hash::make($request->validated('password')) ,
-        //     'email'     => $request->validated('email'),
-        //     'role'      => $request->validated('role'),
-        // ]);
-        
-        // var_dump($x); exit;
+        // var_dump($request);exit();
 
+
+        User::create([
+            'name'      => $request->input('name'),
+            'password'  => Hash::make($request->input('password')) ,
+            'email'     => $request->input('email'),
+            'role'      => $request->input('role'),
+        ]);
+        
         return redirect()->route('users.index');
     }
 

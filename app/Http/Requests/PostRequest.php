@@ -29,8 +29,8 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return Gate::allows('isAdmin','isManager'); 
-
+        // return Gate::allows('isAdmin','isManager'); 
+        return Gate::allows('isAdmin') || Gate::allows('isManager'); 
         // $comment = Comment::find($this->route('comment'));
         // return $comment && $this->user()->can('update', $comment);
 

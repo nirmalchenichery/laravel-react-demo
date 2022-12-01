@@ -23,7 +23,7 @@ export default function Create(props) {
 
     const handleChangeSelect = event => {
         setSelected(event.target.value);
-        setData("role", event.target.value)
+        setData("language", event.target.value)
     };
 
     function handleSubmit(e) {
@@ -35,9 +35,9 @@ export default function Create(props) {
         <Authenticated
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create Post</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create User</h2>}
         >
-            <Head title="Posts" />
+            <Head title="Users" />
   
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -47,14 +47,13 @@ export default function Create(props) {
                             <div className="flex items-center justify-between mb-6">
                                 <Link
                                     className="px-6 py-2 text-white bg-blue-500 rounded-md focus:outline-none"
-                                    href={ route("posts.index") }
+                                    href={ route('users.index') }
                                 >
                                     Back
                                 </Link>
                             </div>
   
                             <form name="createForm" onSubmit={handleSubmit}>
-
                                 <div className="flex flex-col">
                                     <label className="font-bold">Name</label>
                                     <input
@@ -106,6 +105,7 @@ export default function Create(props) {
                                     </span>}
                                 </div>
 
+
                                 <div className="flex flex-col">
                                     <label className="font-bold">Role</label>
                                     <select value={selected} onChange={handleChangeSelect}>
@@ -116,12 +116,12 @@ export default function Create(props) {
                                         ))}
                                     </select>
                                    
-                                    {errors.role && <span className="border border-red-500 p-3 text-red-600">
-                                        {errors.role}
+                                    {errors.language && <span className="border border-red-500 p-3 text-red-600">
+                                        {errors.language}
                                     </span>}
 
                                 </div>
-
+                                
                                 <div className="mt-4">
                                     <button
                                         type="submit"
