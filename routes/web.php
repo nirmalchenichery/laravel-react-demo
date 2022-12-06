@@ -60,7 +60,7 @@ Route::get('/dashboard', function () {
         return Inertia::render('ManagerDashboard');
     }
     else{
-        return Inertia::render('UserDashboard');
+        return Inertia::render('Home');
     } 
 
 

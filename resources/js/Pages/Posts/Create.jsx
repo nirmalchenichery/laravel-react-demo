@@ -173,7 +173,7 @@ export default function Create(props) {
                                     </div>
 
                                     <div className="flex flex-col">
-                                        <label className="font-bold">Posted At </label>
+                                        <label className="font-bold">Posted Date </label>
                                         <input
                                             type="date"
                                             className="w-full px-4 py-2"
@@ -188,7 +188,9 @@ export default function Create(props) {
                                         {errors.posted_date && <span className="border border-red-500 p-3 text-red-600">
                                             {errors.posted_date}
                                         </span>}
-
+                                    </div>
+                                    <div className="flex flex-col">    
+                                        <label className="font-bold">Posted Time </label>        
                                         <input   
                                             type="time"
                                             className="w-full px-4 py-2"

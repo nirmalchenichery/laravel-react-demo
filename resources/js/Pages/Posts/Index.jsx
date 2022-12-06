@@ -12,7 +12,7 @@ export default function Index(props) {
 
     function destroy(e) {
         if (confirm("Are you sure you want to delete this user?")) {
-            Inertia.delete(route("posts.destroy", e.currentTarget.id));
+            Inertia.delete(route("blog.destroy", e.currentTarget.id));
         }
     }
 

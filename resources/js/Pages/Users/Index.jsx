@@ -16,14 +16,9 @@ export default function Index(props) {
         }
     }
 
-    // console.log(users.data);
-
     const user_list = users.data.map( (user, index) => {
         return <UserListItem key={index} user={user}/>
     })
-
- 
-    // console.log(user_list);
 
     return (
         <Authenticated

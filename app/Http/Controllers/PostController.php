@@ -212,6 +212,7 @@ class PostController extends Controller
         $this->authorize('delete', $post);
         $post->delete();
         return redirect()->route('posts.index');
+        
 
     }
 }
